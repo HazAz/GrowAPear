@@ -4,54 +4,60 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
+    [SerializeField] private float moveSpeed = 5f;
+	[SerializeField] private float jumpForce = 10f;
+	[SerializeField] private Rigidbody rb;
+	[SerializeField] private Animator animator;
 
-    private Rigidbody2D rb;
-    private bool isGrounded;
-    private bool hasJumped;
+	private bool isGrounded = true;
 
-    void Start()
+	void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (isGrounded)
+			{
+				rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+			}
+		}
 
-    void Update()
-    {
+		var moveVelocity = 0f;
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+		//Left Right Movement
+		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+		{
+			moveVelocity = -moveSpeed;
+		}
+		if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+		{
+			moveVelocity = moveSpeed;
+		}
 
+		rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-        rb.velocity = movement;
+		if (isGrounded)
+		{
+			animator.Play(moveVelocity == 0f ? "IdleAnim" : "MoveAnim");
+		}
+		else
+		{
+			animator.Play("JumpAnim");
+		}
+	}
 
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.transform.CompareTag("Platform"))
+		{
+			isGrounded = true;
+		}
+	}
 
-        if (Input.GetButtonDown("Jump") && isGrounded && !hasJumped)
-        {
-            Jump();
-        }
-    }
-
-    void FixedUpdate()
-    {
-
-    }
-
-    void Jump()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        hasJumped = true;
-    }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.collider.CompareTag("Ground"))
-        {
-            hasJumped = false;
-        }
-    }
-
+	private void OnCollisionExit(Collision collision)
+	{
+		if (collision.transform.CompareTag("Platform"))
+		{
+			isGrounded = false;
+		}
+	}
 }
