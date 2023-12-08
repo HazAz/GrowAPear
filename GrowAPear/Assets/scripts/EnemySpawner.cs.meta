@@ -3,7 +3,10 @@ guid: 53cfe6124c2c9554b9b18c093884f36a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mosquitoPrefab: {fileID: 100000, guid: 3f4d2118f6a772542a1635ef5bfa6982, type: 3}
+  - insectPrefab: {fileID: 100018, guid: 3f4d2118f6a772542a1635ef5bfa6982, type: 3}
+  - player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
