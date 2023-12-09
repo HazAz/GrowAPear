@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
     [SerializeField] private HealthBar healthBar;
-    
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -21,8 +21,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth < 0)
         {
-			currentHealth = 0;
-			Die();
+            currentHealth = 0;
+            Die();
         }
 
         healthBar.SetHealth(currentHealth);
@@ -30,6 +30,16 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-		SceneManager.LoadScene("GameOver");
-	}
+        SceneManager.LoadScene("GameOver");
+
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            healthBar.SetHealth(currentHealth += 15);
+        }
+    }
 }
+
