@@ -7,6 +7,7 @@ public class MosquitoScript : MonoBehaviour
 	[SerializeField] private float speed = 3f;
 	[SerializeField] private float shootingRange = 10f;
 	[SerializeField] private float meleeRange = 2f;
+	[SerializeField] private Animator animator;
 
 	private Transform player;
 	private MosquitoBulletScript bulletPrefab;
@@ -35,6 +36,7 @@ public class MosquitoScript : MonoBehaviour
 		{
 			if (distanceToPlayer > meleeRange)
 			{
+				animator.Play("Skeeter-FlyingAnim");
 				ChasePlayer();
 			}
 			else
@@ -51,6 +53,7 @@ public class MosquitoScript : MonoBehaviour
 		}
 		else
 		{
+			animator.Play("Skeeter-FlyingAnim");
 			ChasePlayer();
 		}
 	}
@@ -75,6 +78,7 @@ public class MosquitoScript : MonoBehaviour
 	private IEnumerator MeleeAttack()
 	{
 		inAction = true;
+		animator.Play("Skeeter-Melee");
 		yield return new WaitForSeconds(0.5f);
 		// Use a raycast to check for the player in front of the enemy
 		RaycastHit hit;
@@ -90,6 +94,8 @@ public class MosquitoScript : MonoBehaviour
 			}
 		}
 
+		yield return new WaitForSeconds(0.5f);
+		animator.Play("Skeeter-FlyingAnim");
 		yield return new WaitForSeconds(0.5f);
 		inAction = false;
 	}
