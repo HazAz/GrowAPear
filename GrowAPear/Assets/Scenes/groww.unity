@@ -592,6 +592,7 @@ GameObject:
   - component: {fileID: 540285207}
   - component: {fileID: 540285208}
   - component: {fileID: 540285209}
+  - component: {fileID: 540285210}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -700,6 +701,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &540285210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540285203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3626fdbd69847284cb0fe30549014057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 1644182741}
 --- !u!1 &553078539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,8 +1510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.617981, y: 5}
-  m_SizeDelta: {x: 427.232, y: 55.753}
+  m_AnchoredPosition: {x: -12.617981, y: 3.3888}
+  m_SizeDelta: {x: 427.232, y: 35.0486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063988680
 MonoBehaviour:
@@ -1632,7 +1648,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1076652543
 Canvas:
   m_ObjectHideFlags: 0
@@ -2154,7 +2170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cfe6124c2c9554b9b18c093884f36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mosquitoPrefab: {fileID: 1638444836145330, guid: 031f4f4b1f7d8b7489da0919e18ceac3, type: 3}
+  mosquitoPrefab: {fileID: 919132149155446097, guid: 5da62afc2f9e7e34e85afa61af143d0e, type: 3}
   insectPrefab: {fileID: 1541859410316496, guid: 4fe5a7bcbee1651418ea031a87ff53e4, type: 3}
   maxMosquitoCount: 5
   maxInsectCount: 5
@@ -2844,6 +2860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644182739}
   - component: {fileID: 1644182740}
+  - component: {fileID: 1644182741}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2869,8 +2886,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 74, y: -64}
-  m_SizeDelta: {x: 419.3, y: 52.45401}
+  m_AnchoredPosition: {x: 30.7, y: -14.4}
+  m_SizeDelta: {x: 419.3, y: 28.2708}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1644182740
 MonoBehaviour:
@@ -2923,6 +2940,50 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1644182741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644182738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db16011455656c42bed30db5d5c021d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1644182740}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 0.8639455, b: 0, a: 1}
+    key2: {r: 0.15044188, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  fill: {fileID: 1904590701}
 --- !u!1 &1662292733
 GameObject:
   m_ObjectHideFlags: 0
