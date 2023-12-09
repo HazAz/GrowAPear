@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1076652543
 Canvas:
   m_ObjectHideFlags: 0
@@ -2028,7 +2028,7 @@ MonoBehaviour:
   mosquitoPrefab: {fileID: 5407190486252146172, guid: f4eefb4af1ac394419aa4a80f51b3f12, type: 3}
   insectPrefab: {fileID: 1541859410316496, guid: 4fe5a7bcbee1651418ea031a87ff53e4, type: 3}
   bulletPrefab: {fileID: 8363977490194873230, guid: fc3758f840234a1469387882cda1967e, type: 3}
-  maxMosquitoCount: 1
+  maxMosquitoCount: 20
   maxInsectCount: 0
   minTimeToSpawn: 2
   maxTimeToSpawn: 5
@@ -2741,7 +2741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30.700012, y: -14.400024}
+  m_AnchoredPosition: {x: 30.699951, y: -14.400024}
   m_SizeDelta: {x: 419.3, y: 28.2708}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1644182740

@@ -17,13 +17,15 @@ public class MosquitoScript : MonoBehaviour
 	private bool inAction = false;
 
 	private PlayerHealth playerHealth;
+	private EnemySpawner enemySpawner;
 
-	public void Init(Transform playerTransform, MosquitoBulletScript bullet)
+	public void Init(Transform playerTransform, MosquitoBulletScript bullet, EnemySpawner es)
 	{
 		player = playerTransform;
 		playerHealth = player.GetComponent<PlayerHealth>();
 		bulletPrefab = bullet;
 		isMelee = Random.value < 0.5f;
+		enemySpawner = es;
 	}
 
 	private void Update()
@@ -83,10 +85,8 @@ public class MosquitoScript : MonoBehaviour
 		inAction = true;
 		animator.Play("Skeeter-Melee");
 		yield return new WaitForSeconds(0.6f);
-		// Use a raycast to check for the player in front of the enemy
-		RaycastHit hit;
 
-		if (Physics.Raycast(transform.position, transform.forward, out hit, meleeRange))
+		if (Physics.Raycast(transform.position, transform.forward, out var hit, meleeRange))
 		{
 			// Check if the hit object is the player
 			if (hit.collider.CompareTag("Player"))
@@ -99,5 +99,11 @@ public class MosquitoScript : MonoBehaviour
 		animator.Play("Skeeter-FlyingAnim");
 		yield return new WaitForSeconds(0.5f);
 		inAction = false;
+	}
+
+	public void Die()
+	{
+		enemySpawner.EnemyDied();
+		Destroy(gameObject);
 	}
 }
