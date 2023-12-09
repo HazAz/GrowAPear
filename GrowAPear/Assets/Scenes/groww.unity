@@ -2028,7 +2028,7 @@ MonoBehaviour:
   mosquitoPrefab: {fileID: 5407190486252146172, guid: f4eefb4af1ac394419aa4a80f51b3f12, type: 3}
   insectPrefab: {fileID: 1541859410316496, guid: 4fe5a7bcbee1651418ea031a87ff53e4, type: 3}
   bulletPrefab: {fileID: 8363977490194873230, guid: fc3758f840234a1469387882cda1967e, type: 3}
-  maxMosquitoCount: 20
+  maxMosquitoCount: 1
   maxInsectCount: 0
   minTimeToSpawn: 2
   maxTimeToSpawn: 5

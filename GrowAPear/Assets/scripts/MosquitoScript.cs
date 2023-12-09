@@ -16,9 +16,12 @@ public class MosquitoScript : MonoBehaviour
 	[SerializeField] private Transform shootPoint;
 	private bool inAction = false;
 
+	private PlayerHealth playerHealth;
+
 	public void Init(Transform playerTransform, MosquitoBulletScript bullet)
 	{
 		player = playerTransform;
+		playerHealth = player.GetComponent<PlayerHealth>();
 		bulletPrefab = bullet;
 		isMelee = Random.value < 0.5f;
 	}
@@ -70,7 +73,7 @@ public class MosquitoScript : MonoBehaviour
 		// Play animation
 		yield return new WaitForSeconds(0.5f);
 		var bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-		bullet.Init(player.position);
+		bullet.Init(playerHealth);
 		yield return new WaitForSeconds(0.5f);
 		inAction = false;
 	}
@@ -79,7 +82,7 @@ public class MosquitoScript : MonoBehaviour
 	{
 		inAction = true;
 		animator.Play("Skeeter-Melee");
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.6f);
 		// Use a raycast to check for the player in front of the enemy
 		RaycastHit hit;
 
@@ -88,9 +91,7 @@ public class MosquitoScript : MonoBehaviour
 			// Check if the hit object is the player
 			if (hit.collider.CompareTag("Player"))
 			{
-				// Perform melee attack (e.g., reduce player's health)
-				// Replace this with your actual melee attack logic
-				Debug.Log("Melee Attack!");
+				playerHealth.TakeDamage(10);
 			}
 		}
 

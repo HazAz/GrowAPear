@@ -9,10 +9,12 @@ public class MosquitoBulletScript : MonoBehaviour
 
 	private Vector3 targetPosition;
 	private float speed = 0f;
+	private PlayerHealth playerHealth;
 
-	public void Init(Vector3 positionToTarget)
+	public void Init(PlayerHealth health)
 	{
-		targetPosition = (positionToTarget - transform.position).normalized;
+		playerHealth = health;
+		targetPosition = (playerHealth.transform.position - transform.position).normalized;
 		speed = Random.Range(minSpeed, maxSpeed);
 		Invoke("Destroy", 3f);
 	}
@@ -24,6 +26,11 @@ public class MosquitoBulletScript : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.CompareTag("Player"))
+		{
+			playerHealth.TakeDamage(5);
+		}
+
 		Destroy(gameObject);
 	}
 
