@@ -22,6 +22,8 @@ public class EnemySpawner : MonoBehaviour
     private int numInsectSpawned = 0;
 
     private int totalEnemiesCount;
+    private int enemiesDead = 0;
+
     [SerializeField] private Transform player;
 
     // Start is called before the first frame update
@@ -81,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnMosquito()
     {
 		var mosquito = Instantiate(mosquitoPrefab, GetPositionForMosquito(), Quaternion.identity);
-        mosquito.Init(player, bulletPrefab);
+        mosquito.Init(player, bulletPrefab, this);
 		++numMosquitoSpawned;
 	}
 
@@ -110,7 +112,16 @@ public class EnemySpawner : MonoBehaviour
 		}
 
 		return insectSpawnPositions[(int)Random.Range(0, insectSpawnPositions.Count)].position;
+    }
 
+    public void EnemyDied()
+    {
+        enemiesDead++;
+
+        if (enemiesDead == totalEnemiesCount)
+        {
+            // WIN CONDITION
+        }
     }
 
 }
