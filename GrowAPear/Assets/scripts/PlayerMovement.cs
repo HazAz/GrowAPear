@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
 
 	private bool isGrounded = true;
 
+	private void Start()
+	{
+	}
+
 	void Update()
     {
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -33,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
 			moveVelocity = moveSpeed;
 		}
 
+		if (moveVelocity != 0f)
+		{
+			transform.rotation = Quaternion.Euler(new Vector3(0f, moveVelocity > 0f ? 135f : -135f, 0f));
+		}
+		
 		rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
 
 		if (isGrounded)

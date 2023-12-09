@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject mosquitoPrefab;
+    [SerializeField] private MosquitoScript mosquitoPrefab;
     [SerializeField] private GameObject insectPrefab;
+	[SerializeField] private MosquitoBulletScript bulletPrefab;
 
-    [SerializeField] private int maxMosquitoCount = 5;
+	[SerializeField] private int maxMosquitoCount = 5;
     [SerializeField] private int maxInsectCount = 5;
 
 
@@ -21,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     private int numInsectSpawned = 0;
 
     private int totalEnemiesCount;
-    public Transform player;
+    [SerializeField] private Transform player;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnerCoroutine()
     {
+        while (player  == null)
+        {
+            yield return new WaitForSeconds(1f);
+			player = GameObject.FindGameObjectWithTag("Player").transform;
+		}
         bool canSpawnMosquito = true;
         bool canSpawnInsect = true;
 
@@ -74,7 +80,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnMosquito()
     {
-		Instantiate(mosquitoPrefab, GetPositionForMosquito(), Quaternion.identity);
+		var mosquito = Instantiate(mosquitoPrefab, GetPositionForMosquito(), Quaternion.identity);
+        mosquito.Init(player, bulletPrefab);
 		++numMosquitoSpawned;
 	}
 
