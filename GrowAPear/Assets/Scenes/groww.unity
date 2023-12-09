@@ -2170,7 +2170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cfe6124c2c9554b9b18c093884f36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mosquitoPrefab: {fileID: 1638444836145330, guid: 031f4f4b1f7d8b7489da0919e18ceac3, type: 3}
+  mosquitoPrefab: {fileID: 919132149155446097, guid: 5da62afc2f9e7e34e85afa61af143d0e, type: 3}
   insectPrefab: {fileID: 1541859410316496, guid: 4fe5a7bcbee1651418ea031a87ff53e4, type: 3}
   maxMosquitoCount: 5
   maxInsectCount: 5
