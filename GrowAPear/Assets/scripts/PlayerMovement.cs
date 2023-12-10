@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float meleeRange = 2f;
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private Animator animator;
+	[SerializeField] private PlayerSFXScript playerSFXScript;
 
 	private bool isGrounded = true;
 	private bool isAttacking = false;
@@ -75,8 +76,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		isAttacking = true;
 		animator.Play("AttackAnim");
-
-		yield return new WaitForSeconds(0.1f);
+		playerSFXScript.PlayerHitSFX();
 		attackCollider.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
 		attackCollider.SetActive(false);

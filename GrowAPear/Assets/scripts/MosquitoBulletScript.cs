@@ -6,6 +6,7 @@ public class MosquitoBulletScript : MonoBehaviour
 {
 	[SerializeField] private float minSpeed = 3f;
 	[SerializeField] private float maxSpeed = 5f;
+	[SerializeField] private float destroyTime = 3f;
 
 	private Vector3 targetPosition;
 	private float speed = 0f;
@@ -16,7 +17,7 @@ public class MosquitoBulletScript : MonoBehaviour
 		playerHealth = health;
 		targetPosition = (playerHealth.transform.position - transform.position).normalized;
 		speed = Random.Range(minSpeed, maxSpeed);
-		Invoke("Destroy", 3f);
+		Invoke("Destroy", destroyTime);
 	}
 
 	private void Update()
