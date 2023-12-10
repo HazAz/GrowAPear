@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private MosquitoScript mosquitoPrefab;
+    [SerializeField] private SkeeterBossScript skeeterBossPrefab;
 	[SerializeField] private MosquitoBulletScript bulletPrefab;
 
 	[SerializeField] private GameObject insectPrefab;
@@ -155,17 +156,39 @@ public class EnemySpawner : MonoBehaviour
             case 1:
                 ++wave;
 				currentTotalEnemiesCount = totalEnemiesCountWave2;
-                StartCoroutine(SpawnerCoroutine());
+                ResetParams();
+				StartCoroutine(SpawnerCoroutine());
                 break;
 
             case 2:
                 ++wave;
-                //SpawnFinalBoss();
+                enemiesDead = 0;
+				ResetParams();
+				SpawnFinalBoss();
                 break;
 
             case 3:
                 // next scene
                 break;
 	    }
+    }
+
+    private void ResetParams()
+    {
+		enemiesDead = 0;
+        numInsectSpawned = 0;
+        numMosquitoSpawned = 0;
+	}
+
+    private void SpawnFinalBoss()
+    {
+        currentTotalEnemiesCount = 0;
+
+        if (skeeterBossPrefab != null)
+        {
+			var skeeterBoss = Instantiate(skeeterBossPrefab, GetPositionForMosquito(), Quaternion.identity);
+			skeeterBoss.Init(player, this);
+            currentTotalEnemiesCount++;
+		}
     }
 }

@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour
 	[SerializeField] private int maxHealth = 20;
 	private int currentHealth;
 	[SerializeField] private MosquitoScript mosquitoScript;
+	[SerializeField] private SkeeterBossScript skeeterBossScript;
 
 	void Start()
 	{
@@ -24,5 +25,6 @@ public class EnemyHealth : MonoBehaviour
 	private void Die()
 	{
 		mosquitoScript?.Die();
+		skeeterBossScript?.Die();
 	}
 }

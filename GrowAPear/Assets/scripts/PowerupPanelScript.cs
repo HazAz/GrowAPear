@@ -11,11 +11,14 @@ public class PowerupPanelScript : MonoBehaviour
     private PowerupTypes rightPowerupType;
 
     [SerializeField] private TextMeshProUGUI leftBuffName;
-    [SerializeField] private TextMeshProUGUI rightBuffName;
-    [SerializeField] private Image leftBuffImage;
-    [SerializeField] private Image rightBuffImage;
+	[SerializeField] private Image leftBuffImage;
+	[SerializeField] private TextMeshProUGUI leftBuffDesc;
 
-    [SerializeField] private Sprite bananaSprite;
+	[SerializeField] private TextMeshProUGUI rightBuffName;
+    [SerializeField] private Image rightBuffImage;
+	[SerializeField] private TextMeshProUGUI rightBuffDesc;
+
+	[SerializeField] private Sprite bananaSprite;
     [SerializeField] private Sprite cherrySprite;
 
     private PowerupScripts powerupScripts;
@@ -26,8 +29,8 @@ public class PowerupPanelScript : MonoBehaviour
         leftPowerupType = left;
         rightPowerupType = right;
 
-        SetupPowerup(leftPowerupType, leftBuffName, leftBuffImage);
-        SetupPowerup(rightPowerupType, rightBuffName, rightBuffImage);
+        SetupPowerup(leftPowerupType, leftBuffName, leftBuffDesc, leftBuffImage);
+        SetupPowerup(rightPowerupType, rightBuffName, rightBuffDesc, rightBuffImage);
 
         powerupScripts = ps;
 
@@ -36,18 +39,20 @@ public class PowerupPanelScript : MonoBehaviour
         gameObject.SetActive(true);
 	}
 
-    private void SetupPowerup(PowerupTypes type, TextMeshProUGUI name, Image image)
+    private void SetupPowerup(PowerupTypes type, TextMeshProUGUI title, TextMeshProUGUI desc, Image image)
     {
         switch (type)
         {
             case PowerupTypes.Banana:
-                name.text = "BANANAAAA";
+                title.text = "BANANAAAA";
                 image.sprite = bananaSprite;
+                desc.text = "IT DOES SOMETHING!!!";
                 break;
 
 			case PowerupTypes.Cherry:
-				name.text = "CHERRYYYYYYY";
+				title.text = "CHERRYYYYYYY";
 				image.sprite = cherrySprite;
+				desc.text = "IT DOES SOMETHING ELSE!!!";
 				break;
 		}
     }
