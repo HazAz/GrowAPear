@@ -7,14 +7,14 @@ public class ChangeSceneOnTimer : MonoBehaviour
 {
 
     public float changeTime;
-    public string SceneName;
+   
    
     private void Update()
     {
         changeTime -= Time.deltaTime;
         if (changeTime <= 0) 
         {
-            SceneManager.LoadScene(SceneName);
+            SceneManager.LoadScene("Level1");
         }
         
     }
