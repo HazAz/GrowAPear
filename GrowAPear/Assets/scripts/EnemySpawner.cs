@@ -5,11 +5,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private MosquitoScript mosquitoPrefab;
-    [SerializeField] private GameObject insectPrefab;
 	[SerializeField] private MosquitoBulletScript bulletPrefab;
 
-	[SerializeField] private int maxMosquitoCount = 5;
-    [SerializeField] private int maxInsectCount = 5;
+	[SerializeField] private GameObject insectPrefab;
+
+	[SerializeField] private int maxMosquitoCountWave1= 5;
+	[SerializeField] private int maxMosquitoCountWave2 = 10;
+    [SerializeField] private int maxInsectCountWave1 = 5;
+    [SerializeField] private int maxInsectCountWave2 = 10;
 
 
     [SerializeField] private int minTimeToSpawn = 2;
@@ -21,27 +24,40 @@ public class EnemySpawner : MonoBehaviour
     private int numMosquitoSpawned = 0;
     private int numInsectSpawned = 0;
 
-    private int totalEnemiesCount;
+    private int totalEnemiesCountWave1;
+    private int totalEnemiesCountWave2;
+    private int currentTotalEnemiesCount;
     private int enemiesDead = 0;
 
+    private int wave = 1;
+
     [SerializeField] private Transform player;
+    [SerializeField] private PowerupScripts playerPowerupScripts;
 
     // Start is called before the first frame update
     void Start()
     {
-		totalEnemiesCount = maxMosquitoCount + maxInsectCount;
+		totalEnemiesCountWave1 = maxMosquitoCountWave1 + maxInsectCountWave1;
+		totalEnemiesCountWave2 = maxMosquitoCountWave2 + maxInsectCountWave2;
+        currentTotalEnemiesCount = totalEnemiesCountWave1;
         StartCoroutine(SpawnerCoroutine());
 	}
 
     IEnumerator SpawnerCoroutine()
     {
-        while (player  == null)
+        while (player == null)
         {
             yield return new WaitForSeconds(1f);
 			player = GameObject.FindGameObjectWithTag("Player").transform;
+			playerPowerupScripts = player.GetComponent<PowerupScripts>();
 		}
+
         bool canSpawnMosquito = true;
         bool canSpawnInsect = true;
+
+        int maxMosquitoCount = wave == 1 ? maxMosquitoCountWave1 : maxMosquitoCountWave2;
+        int maxInsectCount = wave == 1 ? maxInsectCountWave1 : maxInsectCountWave2;
+        int totalEnemiesCount = wave == 1 ? totalEnemiesCountWave1 : totalEnemiesCountWave2;
 
         while (numMosquitoSpawned + numInsectSpawned < totalEnemiesCount)
         {
@@ -118,10 +134,38 @@ public class EnemySpawner : MonoBehaviour
     {
         enemiesDead++;
 
-        if (enemiesDead == totalEnemiesCount)
+        if (enemiesDead == currentTotalEnemiesCount)
         {
-            // WIN CONDITION
+            WaveEnded();
         }
     }
 
+    private void WaveEnded()
+    {
+        if (wave < 3)
+        {
+            playerPowerupScripts.CreatePowerupPanelScript(onComplete: CompleteWave);
+        }
+    }
+
+    private void CompleteWave()
+    {
+        switch (wave)
+        {
+            case 1:
+                ++wave;
+				currentTotalEnemiesCount = totalEnemiesCountWave2;
+                StartCoroutine(SpawnerCoroutine());
+                break;
+
+            case 2:
+                ++wave;
+                //SpawnFinalBoss();
+                break;
+
+            case 3:
+                // next scene
+                break;
+	    }
+    }
 }
