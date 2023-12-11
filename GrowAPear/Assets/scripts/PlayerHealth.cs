@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
 
 	[SerializeField] private GameObject stainGO;
 
+	private bool isDead = false;
+
 	private bool hasChili = false;
 	private bool hasPepper = false;
 	private bool hasBerry = false;
@@ -36,6 +38,8 @@ public class PlayerHealth : MonoBehaviour
 
 	public void TakeDamage(int damage)
 	{
+		if (isDead) return;
+
 		if (hasKiwi && Random.value < 0.15f)
 		{
 			dodgePrefab.Spawn(transform.position, "DODGE");
@@ -47,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
 		if (currentHealth < 0)
 		{
 			currentHealth = 0;
+			isDead = true;
 			Die();
 		}
 		else

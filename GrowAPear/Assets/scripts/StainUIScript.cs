@@ -6,7 +6,7 @@ public class StainUIScript : MonoBehaviour
 {
 	private float startSize = 0.1f;
 	float currentTimer = 0f;
-	float timer = 1f;
+	float timer = 0.2f;
 
 	private void Start()
 	{

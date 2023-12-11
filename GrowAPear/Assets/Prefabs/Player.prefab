@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4740431095480290554
 Transform:
   m_ObjectHideFlags: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   dodgePrefab: {fileID: 7255533913272819747, guid: 1c3b027fd82be264b979869f24fdeec6, type: 3}
   damagePrefab: {fileID: 7255533913272819747, guid: 6a430a2d8acaa1e4ba4ae3b795bd87f1, type: 3}
   deflectPrefab: {fileID: 7255533913272819747, guid: ab2bb2f6a8b80ea49b33fa28aefd845e, type: 3}
+  stainGO: {fileID: 0}
 --- !u!114 &9063231835156299642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5885954692324562390
 Transform:
   m_ObjectHideFlags: 0

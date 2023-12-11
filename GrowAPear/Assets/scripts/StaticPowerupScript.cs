@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class StaticPowerupScript
 {
@@ -8,6 +9,7 @@ public static class StaticPowerupScript
 	public static List<PowerupTypes> AcquiredPowerups = new();
 	public static List<PowerupTypes> TempPowerups = new();
 
+	public static string currentSceneName = "";
 	public static void NewGameStart()
 	{
 		AvailablePowerups.Clear();
@@ -33,9 +35,18 @@ public static class StaticPowerupScript
 	{
 		foreach (var powerup in TempPowerups)
 		{
-			AcquiredPowerups.Add(powerup);
-			AvailablePowerups.Remove(powerup);
+			if (!AcquiredPowerups.Contains(powerup))
+			{
+				AcquiredPowerups.Add(powerup);
+			}
+
+			if (AvailablePowerups.Contains(powerup))
+			{
+				AvailablePowerups.Remove(powerup);
+			}
 		}
+
+		TempPowerups.Clear();
 	}
 
 	public static void OnDeath()
@@ -46,6 +57,7 @@ public static class StaticPowerupScript
 		}
 
 		TempPowerups.Clear();
+		currentSceneName = SceneManager.GetActiveScene().name;
 	}
 
 	public static void AddPowerupInLevel(PowerupTypes powerup)

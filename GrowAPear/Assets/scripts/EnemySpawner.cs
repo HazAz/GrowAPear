@@ -161,14 +161,13 @@ public class EnemySpawner : MonoBehaviour
 		{
 			case 1:
 				++wave;
-				currentTotalEnemiesCount = totalEnemiesCountWave2;
 				ResetParams();
+				currentTotalEnemiesCount = totalEnemiesCountWave2;
 				StartCoroutine(SpawnerCoroutine());
 				break;
 
 			case 2:
 				++wave;
-				enemiesDead = 0;
 				ResetParams();
 				SpawnFinalBoss();
 				break;
