@@ -36,6 +36,12 @@ public class PowerupScripts : MonoBehaviour
 
 	public void CreatePowerupPanelScript(Action onComplete = null)
 	{
+		if (StaticPowerupScript.AvailablePowerups.Count == 0)
+		{
+			onComplete?.Invoke();
+			return;
+		}
+
 		List<PowerupTypes> availablePowerups = new List<PowerupTypes>(StaticPowerupScript.AvailablePowerups);
 		var powerup1 = availablePowerups[UnityEngine.Random.Range(0, availablePowerups.Count)];
 		availablePowerups.Remove(powerup1);

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 20515362448294029}
   - component: {fileID: 8271185569223802945}
   - component: {fileID: 8186803875270742243}
-  - component: {fileID: -6155435385734633126}
+  - component: {fileID: 6936278310983240508}
   m_Layer: 0
-  m_Name: AntPrefab
+  m_Name: AntBossPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1116219683662778855}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8657628863855009421}
@@ -96,12 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7056520bbb40a46b2fe1cfb96ceb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 80
   mosquitoScript: {fileID: 0}
   skeeterBossScript: {fileID: 0}
-  antScript: {fileID: -6155435385734633126}
+  antScript: {fileID: 0}
+  antBossScript: {fileID: 6936278310983240508}
   damagePrefab: {fileID: 7255533913272819747, guid: b33441a8dfe8f0d449f4e4a5d2dcfa73, type: 3}
---- !u!114 &-6155435385734633126
+--- !u!114 &6936278310983240508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,11 +111,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1116219683662778855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7bf238a43e7704d9d0cb65434f9190, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d5cc0f2b920a8e42b36523f5e2c1ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  meleeRange: 1
+  speed: 10
+  meleeRange: 5
   animator: {fileID: 3130404895864382430}
   enemyHealth: {fileID: 8186803875270742243}
 --- !u!1001 &9199916059157756262

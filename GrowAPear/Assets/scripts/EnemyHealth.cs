@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
 	private int currentHealth;
 	[SerializeField] private MosquitoScript mosquitoScript;
 	[SerializeField] private SkeeterBossScript skeeterBossScript;
+	[SerializeField] private AntScript antScript;
+	[SerializeField] private AntBossScript antBossScript;
 	[SerializeField] private DamageNumber damagePrefab;
 
 	void Start()
@@ -30,5 +32,7 @@ public class EnemyHealth : MonoBehaviour
 	{
 		mosquitoScript?.Die();
 		skeeterBossScript?.Die();
+		antScript?.Die();
+		antBossScript?.Die();
 	}
 }

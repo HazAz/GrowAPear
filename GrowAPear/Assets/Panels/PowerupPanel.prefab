@@ -1189,19 +1189,19 @@ MonoBehaviour:
   rightBuffQuote: {fileID: 1478949485940089335}
   rightBuffImage: {fileID: 4400408957872599311}
   rightBuffDesc: {fileID: 4635050919355365407}
-  bananaSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  cucumberSprite: {fileID: 0}
-  bokChoySprite: {fileID: 0}
-  plumSprite: {fileID: 0}
-  chiliSprite: {fileID: 0}
-  pepperSprite: {fileID: 0}
-  grapeSprite: {fileID: 0}
-  appleSprite: {fileID: 0}
-  carrotSprite: {fileID: 0}
-  berrySprite: {fileID: 0}
-  orangeSprite: {fileID: 0}
-  kiwiSprite: {fileID: 0}
-  broccaliSprite: {fileID: 0}
+  bananaSprite: {fileID: 1875790248, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  cucumberSprite: {fileID: -601784499, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  bokChoySprite: {fileID: -1277742570, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  plumSprite: {fileID: 5016251, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  chiliSprite: {fileID: 1765287384, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  pepperSprite: {fileID: 1734020876, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  grapeSprite: {fileID: 131190460, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  appleSprite: {fileID: 1481605344, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  carrotSprite: {fileID: 581919745, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  berrySprite: {fileID: -656322102, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  orangeSprite: {fileID: -306230842, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  kiwiSprite: {fileID: -1851938325, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
+  broccaliSprite: {fileID: 1124485077, guid: eee84894f2571dc4f8d6b114561f8902, type: 3}
 --- !u!1 &6865957800536429455
 GameObject:
   m_ObjectHideFlags: 0
