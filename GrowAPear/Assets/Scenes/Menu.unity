@@ -183,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 69025149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.4, z: 109.5}
+  m_LocalPosition: {x: 0, y: 2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,8 +304,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -57}
-  m_SizeDelta: {x: 271.068, y: 58.82}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382214310
 MonoBehaviour:
@@ -511,10 +511,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 879807620}
+  - {fileID: 382214309}
   - {fileID: 2007249361}
   - {fileID: 1164160298}
-  - {fileID: 382214309}
+  - {fileID: 879807620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -594,8 +594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -155.587}
-  m_SizeDelta: {x: 211.046, y: 30.699}
+  m_AnchoredPosition: {x: 0, y: -272}
+  m_SizeDelta: {x: 211.046, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879807621
 MonoBehaviour:
@@ -898,7 +898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076294, y: -192.1}
+  m_AnchoredPosition: {x: 5.456968e-12, y: -219}
   m_SizeDelta: {x: 211.046, y: 22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164160299
@@ -1461,7 +1461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -217.5}
+  m_AnchoredPosition: {x: 0, y: -182}
   m_SizeDelta: {x: 211.046, y: 22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007249362
