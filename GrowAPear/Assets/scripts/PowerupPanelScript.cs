@@ -156,7 +156,7 @@ public class PowerupPanelScript : MonoBehaviour
 
     public void ApplyRightBuff()
     {
-		powerupScripts.ApplyPowerup(leftPowerupType);
+		powerupScripts.ApplyPowerup(rightPowerupType);
         Continue();
 	}
 

@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPowerup : MonoBehaviour
 {
-	[SerializeField] private GameObject rotatingBananaPrefab;
+	[SerializeField] private RotatingBananaScript rotatingBananaPrefab;
 	[SerializeField] private AttackColliderScript attackCollider;
 	[SerializeField] private AttackColliderScript grapeCollider;
 	[SerializeField] private PlayerMovement playerMovement;
 	[SerializeField] private PlayerHealth playerHealth;
+	[SerializeField] private GameObject leftGloves;
+	[SerializeField] private GameObject rightGloves;
 	public void ApplyPowerups(PowerupTypes powerup)
 	{
 		switch (powerup)
 		{
 			case PowerupTypes.Banana:
-				Instantiate(rotatingBananaPrefab, transform.position, Quaternion.identity);
+				var rotatingBanana = Instantiate(rotatingBananaPrefab, transform.position, Quaternion.identity);
+				rotatingBanana.Init(this.transform);
 				break;
 
 			case PowerupTypes.Cucumber:
@@ -63,9 +64,11 @@ public class PlayerPowerup : MonoBehaviour
 				break;
 
 			case PowerupTypes.Broccoli:
-				// spawn stuff here and increase collider
+				leftGloves.SetActive(true);
+				rightGloves.SetActive(true);
+				attackCollider.IncreaseSize();
+				playerMovement.CanPunch = true;
 				break;
-
 		}
 	}
 }

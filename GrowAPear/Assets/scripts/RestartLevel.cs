@@ -7,6 +7,7 @@ public class RestartLevel : MonoBehaviour
 {
     public void onRestartLevelButton()
     {
-        SceneManager.LoadScene("Level1");
+        StaticPowerupScript.OnDeath();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
