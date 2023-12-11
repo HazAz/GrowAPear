@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AntScript : MonoBehaviour
+public class AntBossScript : MonoBehaviour
 {
-	[SerializeField] private float speed = 6f;
-	[SerializeField] private float meleeRange = 1f;
+	[SerializeField] private float speed = 10f;
+	[SerializeField] private float meleeRange = 3f;
 	[SerializeField] private Animator animator;
 	[SerializeField] private EnemyHealth enemyHealth;
 
@@ -84,5 +83,31 @@ public class AntScript : MonoBehaviour
 	{
 		enemySpawner.EnemyDied();
 		Destroy(gameObject);
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			InvokeRepeating("DealCollisionDamage", 1f, 5f);
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			CancelInvoke("DealCollisionDamage");
+		}
+	}
+
+	private void DealCollisionDamage()
+	{
+		playerHealth.TakeDamage(5);
+
+		if (playerHealth.HasChili)
+		{
+			enemyHealth.TakeDamage(5);
+		}
 	}
 }

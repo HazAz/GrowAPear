@@ -9,22 +9,23 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField] private SkeeterBossScript skeeterBossPrefab;
 	[SerializeField] private MosquitoBulletScript bulletPrefab;
 
-	[SerializeField] private GameObject insectPrefab;
+	[SerializeField] private AntScript antPrefab;
+	[SerializeField] private AntBossScript antBossPrefab;
 
 	[SerializeField] private int maxMosquitoCountWave1= 5;
 	[SerializeField] private int maxMosquitoCountWave2 = 10;
-	[SerializeField] private int maxInsectCountWave1 = 5;
-	[SerializeField] private int maxInsectCountWave2 = 10;
+	[SerializeField] private int maxAntCountWave1 = 5;
+	[SerializeField] private int maxAntCountWave2 = 10;
 
 
 	[SerializeField] private int minTimeToSpawn = 2;
 	[SerializeField] private int maxTimeToSpawn = 5;
 
 	[SerializeField] private List<Transform> mosquitoSpawnPositions = new();
-	[SerializeField] private List<Transform> insectSpawnPositions = new();
+	[SerializeField] private List<Transform> antSpawnPositions = new();
 
 	private int numMosquitoSpawned = 0;
-	private int numInsectSpawned = 0;
+	private int numAntSpawned = 0;
 
 	private int totalEnemiesCountWave1;
 	private int totalEnemiesCountWave2;
@@ -39,8 +40,8 @@ public class EnemySpawner : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		totalEnemiesCountWave1 = maxMosquitoCountWave1 + maxInsectCountWave1;
-		totalEnemiesCountWave2 = maxMosquitoCountWave2 + maxInsectCountWave2;
+		totalEnemiesCountWave1 = maxMosquitoCountWave1 + maxAntCountWave1;
+		totalEnemiesCountWave2 = maxMosquitoCountWave2 + maxAntCountWave2;
 		currentTotalEnemiesCount = totalEnemiesCountWave1;
 		StartCoroutine(SpawnerCoroutine());
 	}
@@ -55,13 +56,13 @@ public class EnemySpawner : MonoBehaviour
 		}
 
 		bool canSpawnMosquito = true;
-		bool canSpawnInsect = true;
+		bool canSpawnAnt = true;
 
 		int maxMosquitoCount = wave == 1 ? maxMosquitoCountWave1 : maxMosquitoCountWave2;
-		int maxInsectCount = wave == 1 ? maxInsectCountWave1 : maxInsectCountWave2;
+		int maxAntCount = wave == 1 ? maxAntCountWave1 : maxAntCountWave2;
 		int totalEnemiesCount = wave == 1 ? totalEnemiesCountWave1 : totalEnemiesCountWave2;
 
-		while (numMosquitoSpawned + numInsectSpawned < totalEnemiesCount)
+		while (numMosquitoSpawned + numAntSpawned < totalEnemiesCount)
 		{
 			yield return new WaitForSeconds(Random.Range(minTimeToSpawn, maxTimeToSpawn));
 
@@ -70,18 +71,18 @@ public class EnemySpawner : MonoBehaviour
 				canSpawnMosquito = false;
 			}
 
-			if (numInsectSpawned >= maxInsectCount)
+			if (numAntSpawned >= maxAntCount)
 			{
-				canSpawnInsect = false;
+				canSpawnAnt = false;
 			}
 
-			if (canSpawnMosquito && !canSpawnInsect)
+			if (canSpawnMosquito && !canSpawnAnt)
 			{
 				SpawnMosquito();
 			}
-			else if (!canSpawnMosquito && canSpawnInsect)
+			else if (!canSpawnMosquito && canSpawnAnt)
 			{
-				SpawnInsect();
+				SpawnAnt();
 			}
 			else
 			{
@@ -92,7 +93,7 @@ public class EnemySpawner : MonoBehaviour
 				}
 				else
 				{
-					SpawnInsect();
+					SpawnAnt();
 				}
 			}
 		}
@@ -105,11 +106,12 @@ public class EnemySpawner : MonoBehaviour
 		++numMosquitoSpawned;
 	}
 
-	private void SpawnInsect()
+	private void SpawnAnt()
 	{
 
-		Instantiate(insectPrefab, GetPositionForInsect(), Quaternion.identity);
-		++numInsectSpawned;
+		var ant = Instantiate(antPrefab, GetPositionForAnt(), Quaternion.identity);
+		ant.Init(player, this);
+		++numAntSpawned;
 	}
 
 	private Vector3 GetPositionForMosquito()
@@ -122,14 +124,14 @@ public class EnemySpawner : MonoBehaviour
 		return mosquitoSpawnPositions[(int)Random.Range(0, mosquitoSpawnPositions.Count)].position;
 	}
 
-	private Vector3 GetPositionForInsect()
+	private Vector3 GetPositionForAnt()
 	{
-		if (insectSpawnPositions.Count == 0)
+		if (antSpawnPositions.Count == 0)
 		{
 			return Vector3.zero;
 		}
 
-		return insectSpawnPositions[(int)Random.Range(0, insectSpawnPositions.Count)].position;
+		return antSpawnPositions[(int)Random.Range(0, antSpawnPositions.Count)].position;
 	}
 
 	public void EnemyDied()
@@ -181,7 +183,7 @@ public class EnemySpawner : MonoBehaviour
 	private void ResetParams()
 	{
 		enemiesDead = 0;
-		numInsectSpawned = 0;
+		numAntSpawned = 0;
 		numMosquitoSpawned = 0;
 	}
 
@@ -193,6 +195,13 @@ public class EnemySpawner : MonoBehaviour
 		{
 			var skeeterBoss = Instantiate(skeeterBossPrefab, GetPositionForMosquito(), Quaternion.identity);
 			skeeterBoss.Init(player, this);
+			currentTotalEnemiesCount++;
+		}
+
+		if (antBossPrefab != null)
+		{
+			var antBoss = Instantiate(antBossPrefab, GetPositionForAnt(), Quaternion.identity);
+			antBoss.Init(player, this);
 			currentTotalEnemiesCount++;
 		}
 	}
