@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
 	[SerializeField] private float jumpForce = 10f;
-	[SerializeField] private float meleeRange = 2f;
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private Animator animator;
 	[SerializeField] private PlayerSFXScript playerSFXScript;
@@ -14,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 	private bool isGrounded = true;
 	private bool isAttacking = false;
 	private bool isDead = false;
+	private bool canDoubleJump = false;
+	private int jumpCount = 0;
 
 	[SerializeField] private GameObject attackCollider;
 
@@ -28,12 +29,11 @@ public class PlayerMovement : MonoBehaviour
     {
 		if (isDead || isAttacking) return;
 
-		Debug.DrawLine(transform.position, transform.position + transform.forward * meleeRange);
-
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (isGrounded)
+			if (isGrounded || (canDoubleJump && jumpCount < 2))
 			{
+				jumpCount++;
 				rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 			}
 		}
@@ -97,5 +97,15 @@ public class PlayerMovement : MonoBehaviour
 		{
 			isGrounded = false;
 		}
+	}
+
+	public void IncreaseMovementSpeed()
+	{
+		moveSpeed += 3f;
+	}
+
+	public void AllowDoubleJump()
+	{
+		canDoubleJump = true;
 	}
 }

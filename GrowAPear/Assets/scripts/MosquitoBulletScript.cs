@@ -10,13 +10,17 @@ public class MosquitoBulletScript : MonoBehaviour
 
 	private Vector3 targetPosition;
 	private float speed = 0f;
+	private bool isBoss = false;
 	private PlayerHealth playerHealth;
+	private Transform shooterTransform;
 
-	public void Init(PlayerHealth health)
+	public void Init(PlayerHealth health, Transform st = null, bool boss = false)
 	{
 		playerHealth = health;
 		targetPosition = (playerHealth.transform.position - transform.position).normalized;
 		speed = Random.Range(minSpeed, maxSpeed);
+		shooterTransform = st;
+		isBoss = boss;
 		Invoke("Destroy", destroyTime);
 	}
 
@@ -29,10 +33,29 @@ public class MosquitoBulletScript : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			playerHealth.TakeDamage(5);
+			TryHitPlayer();
 		}
+		else if (other.CompareTag("Enemy"))
+		{
+			other.GetComponent<EnemyHealth>()?.TakeDamage(5);
+			Destroy(gameObject);
+		}
+	}
 
-		Destroy(gameObject);
+	private void TryHitPlayer()
+	{
+		if (playerHealth.HasBerry)
+		{
+			if (!isBoss && Random.value < 0.25f)
+			{
+				targetPosition = (shooterTransform.position - transform.position).normalized;
+			}
+			else
+			{
+				playerHealth.TakeDamage(5);
+				Destroy(gameObject);
+			}
+		}
 	}
 
 	private void Destroy()

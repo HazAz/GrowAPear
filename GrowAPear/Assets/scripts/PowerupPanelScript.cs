@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -11,10 +9,12 @@ public class PowerupPanelScript : MonoBehaviour
     private PowerupTypes rightPowerupType;
 
     [SerializeField] private TextMeshProUGUI leftBuffName;
+    [SerializeField] private TextMeshProUGUI leftBuffQuote;
 	[SerializeField] private Image leftBuffImage;
 	[SerializeField] private TextMeshProUGUI leftBuffDesc;
 
 	[SerializeField] private TextMeshProUGUI rightBuffName;
+	[SerializeField] private TextMeshProUGUI rightBuffQuote;
     [SerializeField] private Image rightBuffImage;
 	[SerializeField] private TextMeshProUGUI rightBuffDesc;
 
@@ -29,8 +29,8 @@ public class PowerupPanelScript : MonoBehaviour
         leftPowerupType = left;
         rightPowerupType = right;
 
-        SetupPowerup(leftPowerupType, leftBuffName, leftBuffDesc, leftBuffImage);
-        SetupPowerup(rightPowerupType, rightBuffName, rightBuffDesc, rightBuffImage);
+        SetupPowerup(leftPowerupType, leftBuffName, leftBuffQuote, leftBuffDesc, leftBuffImage);
+        SetupPowerup(rightPowerupType, rightBuffName, rightBuffQuote, rightBuffDesc, rightBuffImage);
 
         powerupScripts = ps;
 
@@ -39,17 +39,18 @@ public class PowerupPanelScript : MonoBehaviour
         gameObject.SetActive(true);
 	}
 
-    private void SetupPowerup(PowerupTypes type, TextMeshProUGUI title, TextMeshProUGUI desc, Image image)
+    private void SetupPowerup(PowerupTypes type, TextMeshProUGUI title, TextMeshProUGUI quote, TextMeshProUGUI desc, Image image)
     {
         switch (type)
         {
             case PowerupTypes.Banana:
-                title.text = "BANANAAAA";
+                title.text = "BANANAPOLEON";
+                quote.text = "\"There is nothing we can peel.\"";
                 image.sprite = bananaSprite;
-                desc.text = "IT DOES SOMETHING!!!";
+                desc.text = "Bananapoleon will rotate around you, dealing damage to foes he hits!";
                 break;
 
-			case PowerupTypes.Cherry:
+			case PowerupTypes.Cucumber:
 				title.text = "CHERRYYYYYYY";
 				image.sprite = cherrySprite;
 				desc.text = "IT DOES SOMETHING ELSE!!!";
@@ -59,7 +60,7 @@ public class PowerupPanelScript : MonoBehaviour
 
     public void ApplyLeftBuff()
     {
-        Debug.LogError("Left buff applied");
+        powerupScripts.ApplyPowerup(leftPowerupType);
         OnComplete?.Invoke();
         gameObject.SetActive(false);
     }

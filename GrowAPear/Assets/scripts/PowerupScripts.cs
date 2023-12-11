@@ -5,27 +5,38 @@ using UnityEngine;
 
 public enum PowerupTypes
 {
-    Banana,
-    Cherry,
-
+    Banana, // bananapoleon 1
+    Cucumber, // hercucumber 2
+    BokChoy, // usain bok 3
+    Plum, // Plumario 4
+    Chili, // Achilis 5
+    Berry, // Kylian mbappe 6 
+    Grape, // Alexander the grape 7
+    Apple, // Hippocratapple 8
 }
 
 public class PowerupScripts : MonoBehaviour
 {
     [SerializeField] private PowerupPanelScript powerupPanelScript;
+    [SerializeField] private PlayerPowerup playerPowerup;
     private List<PowerupTypes> acquiredPowerupTypes = new();
     private List<PowerupTypes> availablePowerupTypes = new();
 
     private void Awake()
     {
         availablePowerupTypes.Add(PowerupTypes.Banana);
-        availablePowerupTypes.Add(PowerupTypes.Cherry);
+        availablePowerupTypes.Add(PowerupTypes.Cucumber);
     }
 
     public void CreatePowerupPanelScript(Action onComplete = null)
     {
-        powerupPanelScript.Init(PowerupTypes.Banana, PowerupTypes.Cherry, this, onComplete);
+        powerupPanelScript.Init(PowerupTypes.Banana, PowerupTypes.Cucumber, this, onComplete);
     }
 
-    
+    public void ApplyPowerup(PowerupTypes powerupType)
+    {
+        acquiredPowerupTypes.Add(powerupType);
+        availablePowerupTypes.Remove(powerupType);
+        playerPowerup.ApplyPowerups(powerupType);
+    }
 }
