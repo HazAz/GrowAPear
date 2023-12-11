@@ -9,6 +9,7 @@ public class MosquitoScript : MonoBehaviour
 	[SerializeField] private float meleeRange = 2f;
 	[SerializeField] private Animator animator;
 	[SerializeField] private EnemyHealth enemyHealth;
+	[SerializeField] private float meleeChance;
 
 	private Transform player;
 	private MosquitoBulletScript bulletPrefab;
@@ -25,7 +26,7 @@ public class MosquitoScript : MonoBehaviour
 		player = playerTransform;
 		playerHealth = player.GetComponent<PlayerHealth>();
 		bulletPrefab = bullet;
-		isMelee = Random.value < 0.5f;
+		isMelee = Random.value < meleeChance;
 		enemySpawner = es;
 	}
 
