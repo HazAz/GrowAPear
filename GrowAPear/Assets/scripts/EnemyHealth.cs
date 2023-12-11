@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
 	[SerializeField] private SkeeterBossScript skeeterBossScript;
 	[SerializeField] private AntScript antScript;
 	[SerializeField] private AntBossScript antBossScript;
+	[SerializeField] private BeeScript beeScript;
+	[SerializeField] private BeeBossScript beeBossScript;
 	[SerializeField] private DamageNumber damagePrefab;
 
 	void Start()
@@ -34,5 +36,7 @@ public class EnemyHealth : MonoBehaviour
 		skeeterBossScript?.Die();
 		antScript?.Die();
 		antBossScript?.Die();
+		beeScript?.Die();
+		beeBossScript?.Die();
 	}
 }

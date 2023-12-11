@@ -12,11 +12,15 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField] private AntScript antPrefab;
 	[SerializeField] private AntBossScript antBossPrefab;
 
+	[SerializeField] private BeeScript beePrefab;
+	[SerializeField] private BeeBossScript beeBossPrefab;
+
 	[SerializeField] private int maxMosquitoCountWave1= 5;
 	[SerializeField] private int maxMosquitoCountWave2 = 10;
 	[SerializeField] private int maxAntCountWave1 = 5;
 	[SerializeField] private int maxAntCountWave2 = 10;
-
+	[SerializeField] private int maxBeeCountWave1 = 0;
+	[SerializeField] private int maxBeeCountWave2 = 0;
 
 	[SerializeField] private int minTimeToSpawn = 2;
 	[SerializeField] private int maxTimeToSpawn = 5;
@@ -26,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
 	private int numMosquitoSpawned = 0;
 	private int numAntSpawned = 0;
+	private int numBeeSpawned = 0;
 
 	private int totalEnemiesCountWave1;
 	private int totalEnemiesCountWave2;
@@ -40,8 +45,8 @@ public class EnemySpawner : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		totalEnemiesCountWave1 = maxMosquitoCountWave1 + maxAntCountWave1;
-		totalEnemiesCountWave2 = maxMosquitoCountWave2 + maxAntCountWave2;
+		totalEnemiesCountWave1 = maxMosquitoCountWave1 + maxAntCountWave1 + maxBeeCountWave1;
+		totalEnemiesCountWave2 = maxMosquitoCountWave2 + maxAntCountWave2 + maxBeeCountWave2;
 		currentTotalEnemiesCount = totalEnemiesCountWave1;
 		StartCoroutine(SpawnerCoroutine());
 	}
@@ -57,12 +62,14 @@ public class EnemySpawner : MonoBehaviour
 
 		bool canSpawnMosquito = true;
 		bool canSpawnAnt = true;
+		bool canSpawnBee = true;
 
 		int maxMosquitoCount = wave == 1 ? maxMosquitoCountWave1 : maxMosquitoCountWave2;
 		int maxAntCount = wave == 1 ? maxAntCountWave1 : maxAntCountWave2;
+		int maxBeeCount = wave == 1 ? maxBeeCountWave1 : maxBeeCountWave2;
 		int totalEnemiesCount = wave == 1 ? totalEnemiesCountWave1 : totalEnemiesCountWave2;
 
-		while (numMosquitoSpawned + numAntSpawned < totalEnemiesCount)
+		while (numMosquitoSpawned + numAntSpawned + numBeeSpawned < totalEnemiesCount)
 		{
 			yield return new WaitForSeconds(Random.Range(minTimeToSpawn, maxTimeToSpawn));
 
@@ -76,15 +83,24 @@ public class EnemySpawner : MonoBehaviour
 				canSpawnAnt = false;
 			}
 
-			if (canSpawnMosquito && !canSpawnAnt)
+			if (numBeeSpawned >= maxBeeCount)
+			{
+				canSpawnBee = false;
+			}
+
+			if (canSpawnMosquito && !canSpawnAnt && !canSpawnBee)
 			{
 				SpawnMosquito();
 			}
-			else if (!canSpawnMosquito && canSpawnAnt)
+			else if (!canSpawnMosquito && canSpawnAnt && !canSpawnBee)
 			{
 				SpawnAnt();
 			}
-			else
+			else if (!canSpawnMosquito && !canSpawnAnt && canSpawnBee)
+			{
+				SpawnBee();
+			}
+			else if (canSpawnMosquito && canSpawnAnt && !canSpawnBee)
 			{
 				var chance = Random.value;
 				if (chance < 0.5f)
@@ -94,6 +110,46 @@ public class EnemySpawner : MonoBehaviour
 				else
 				{
 					SpawnAnt();
+				}
+			}
+			else if (canSpawnMosquito && !canSpawnAnt && canSpawnBee)
+			{
+				var chance = Random.value;
+				if (chance < 0.5f)
+				{
+					SpawnMosquito();
+				}
+				else
+				{
+					SpawnBee();
+				}
+			}
+			else if (!canSpawnMosquito && canSpawnAnt && canSpawnBee)
+			{
+				var chance = Random.value;
+				if (chance < 0.5f)
+				{
+					SpawnAnt();
+				}
+				else
+				{
+					SpawnBee();
+				}
+			}
+			else
+			{
+				var chance = Random.value;
+				if (chance < 0.33f)
+				{
+					SpawnAnt();
+				}
+				else if (chance < 0.66f)
+				{
+					SpawnMosquito();
+				}
+				else
+				{
+					SpawnBee();
 				}
 			}
 		}
@@ -111,6 +167,13 @@ public class EnemySpawner : MonoBehaviour
 		var ant = Instantiate(antPrefab, GetPositionForAnt(), Quaternion.identity);
 		ant.Init(player, this);
 		++numAntSpawned;
+	}
+
+	private void SpawnBee()
+	{
+		var bee = Instantiate(beePrefab, GetPositionForMosquito(), Quaternion.identity);
+		bee.Init(player, this);
+		++numBeeSpawned;
 	}
 
 	private Vector3 GetPositionForMosquito()
@@ -200,6 +263,13 @@ public class EnemySpawner : MonoBehaviour
 		{
 			var antBoss = Instantiate(antBossPrefab, GetPositionForAnt(), Quaternion.identity);
 			antBoss.Init(player, this);
+			currentTotalEnemiesCount++;
+		}
+
+		if (beeBossPrefab != null)
+		{
+			var beeBoss = Instantiate(beeBossPrefab, GetPositionForAnt(), Quaternion.identity);
+			beeBoss.Init(player, this);
 			currentTotalEnemiesCount++;
 		}
 	}
