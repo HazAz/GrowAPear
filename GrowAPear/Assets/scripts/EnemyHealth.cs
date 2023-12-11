@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DamageNumbersPro;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
 	private int currentHealth;
 	[SerializeField] private MosquitoScript mosquitoScript;
 	[SerializeField] private SkeeterBossScript skeeterBossScript;
+	[SerializeField] private DamageNumber damagePrefab;
 
 	void Start()
 	{
@@ -20,6 +22,8 @@ public class EnemyHealth : MonoBehaviour
 		{
 			Die();
 		}
+		
+		damagePrefab.Spawn(transform.position, damage);
 	}
 
 	private void Die()

@@ -6,7 +6,7 @@ public class SkeeterBossScript : MonoBehaviour
 {
 	[SerializeField] private float speed = 8f;
 	[SerializeField] private float shootingRange = 15f;
-	[SerializeField] private float meleeRange = 4f;
+	[SerializeField] private float meleeRange = 6f;
 	[SerializeField] private Animator animator;
 	[SerializeField] private EnemyHealth enemyHealth;
 

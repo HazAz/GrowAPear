@@ -18424,6 +18424,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1407015561449934218, guid: 1b27bbce5de98ef49a52172b3b74a730, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1797387334288686880, guid: 1b27bbce5de98ef49a52172b3b74a730, type: 3}
       propertyPath: healthBar
       value: 
