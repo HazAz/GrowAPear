@@ -116,6 +116,7 @@ MonoBehaviour:
   shootingRange: 20
   meleeRange: 4
   animator: {fileID: 6370335303362369011}
+  enemyHealth: {fileID: -4497063784613228526}
   bulletPrefab: {fileID: 8363977490194873230, guid: b13d1b16a7124944fb59c23cb93c0e77, type: 3}
   shootPoint: {fileID: 5172439196748355235}
 --- !u!1 &7473368011433332801

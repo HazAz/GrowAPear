@@ -53,6 +53,7 @@ MonoBehaviour:
   shootingRange: 10
   meleeRange: 2
   animator: {fileID: 6370335303362369011}
+  enemyHealth: {fileID: -4497063784613228526}
   shootPoint: {fileID: 5172439196748355235}
 --- !u!135 &657916511470472529
 SphereCollider:
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   mosquitoScript: {fileID: 5407190486252146172}
+  skeeterBossScript: {fileID: 0}
 --- !u!1 &7473368011433332801
 GameObject:
   m_ObjectHideFlags: 0

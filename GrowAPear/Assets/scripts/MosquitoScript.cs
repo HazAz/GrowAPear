@@ -8,6 +8,7 @@ public class MosquitoScript : MonoBehaviour
 	[SerializeField] private float shootingRange = 10f;
 	[SerializeField] private float meleeRange = 2f;
 	[SerializeField] private Animator animator;
+	[SerializeField] private EnemyHealth enemyHealth;
 
 	private Transform player;
 	private MosquitoBulletScript bulletPrefab;
@@ -75,7 +76,7 @@ public class MosquitoScript : MonoBehaviour
 		// Play animation
 		yield return new WaitForSeconds(0.5f);
 		var bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-		bullet.Init(playerHealth);
+		bullet.Init(playerHealth, this.transform);
 		yield return new WaitForSeconds(0.5f);
 		inAction = false;
 	}
@@ -92,6 +93,11 @@ public class MosquitoScript : MonoBehaviour
 			if (hit.collider.CompareTag("Player"))
 			{
 				playerHealth.TakeDamage(10);
+
+				if (playerHealth.HasChili)
+				{
+					enemyHealth.TakeDamage(5);
+				}
 			}
 		}
 

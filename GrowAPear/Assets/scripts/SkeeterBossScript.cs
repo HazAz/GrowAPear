@@ -8,6 +8,7 @@ public class SkeeterBossScript : MonoBehaviour
 	[SerializeField] private float shootingRange = 15f;
 	[SerializeField] private float meleeRange = 4f;
 	[SerializeField] private Animator animator;
+	[SerializeField] private EnemyHealth enemyHealth;
 
 	private Transform player;
 	[SerializeField] private MosquitoBulletScript bulletPrefab;
@@ -62,7 +63,7 @@ public class SkeeterBossScript : MonoBehaviour
 		// Play animation
 		yield return new WaitForSeconds(1f);
 		var bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-		bullet.Init(playerHealth);
+		bullet.Init(playerHealth, boss: true);
 		yield return new WaitForSeconds(2f);
 		inAction = false;
 	}
@@ -79,6 +80,11 @@ public class SkeeterBossScript : MonoBehaviour
 			if (hit.collider.CompareTag("Player"))
 			{
 				playerHealth.TakeDamage(25);
+
+				if (playerHealth.HasChili)
+				{
+					enemyHealth.TakeDamage(5);
+				}
 			}
 		}
 
