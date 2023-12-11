@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuButton : MonoBehaviour
+public class RestartButton : MonoBehaviour
 {
-    public void OnMenuButton()
+    public void OnRestartButton()
     {
         SceneManager.LoadScene("Menu");
     }
