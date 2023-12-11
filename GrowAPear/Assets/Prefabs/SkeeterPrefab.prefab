@@ -118,6 +118,7 @@ MonoBehaviour:
   maxHealth: 20
   mosquitoScript: {fileID: 5407190486252146172}
   skeeterBossScript: {fileID: 0}
+  damagePrefab: {fileID: 7255533913272819747, guid: b33441a8dfe8f0d449f4e4a5d2dcfa73, type: 3}
 --- !u!1 &7473368011433332801
 GameObject:
   m_ObjectHideFlags: 0

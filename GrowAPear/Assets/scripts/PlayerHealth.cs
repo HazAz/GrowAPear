@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DamageNumbersPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class PlayerHealth : MonoBehaviour
 	[SerializeField] private HealthBar healthBar;
 	[SerializeField] private PlayerSFXScript playerSFXScript;
 	[SerializeField] private PlayerMovement playerMovement;
+
+	[SerializeField] private DamageNumber healPrefab;
+	[SerializeField] private DamageNumber dodgePrefab;
+	[SerializeField] private DamageNumber damagePrefab;
+	[SerializeField] private DamageNumber deflectPrefab;
 
 	private bool hasChili = false;
 	private bool hasPepper = false;
@@ -30,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		if (hasKiwi && Random.value < 0.15f)
 		{
+			dodgePrefab.Spawn(transform.position, "DODGE");
 			return;
 		}
 
@@ -45,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
 			playerSFXScript.PlayDamageTakenSFX();
 		}
 
+		damagePrefab.Spawn(transform.position, damage);
 		healthBar.SetHealth(currentHealth);
 	}
 
@@ -82,6 +90,7 @@ public class PlayerHealth : MonoBehaviour
 	private void HealFromApple()
 	{
 		currentHealth = Mathf.Min(maxHealth, currentHealth + 10);
+		healPrefab.Spawn(transform.position, 10);
 
 		healthBar.SetHealth(currentHealth);
 	}
@@ -89,6 +98,7 @@ public class PlayerHealth : MonoBehaviour
 	private void HealFromWater()
 	{
 		currentHealth = Mathf.Min(maxHealth, currentHealth + 15);
+		healPrefab.Spawn(transform.position, 15);
 
 		healthBar.SetHealth(currentHealth);
 	}
@@ -96,6 +106,11 @@ public class PlayerHealth : MonoBehaviour
 	private void GameOver()
 	{
 		SceneManager.LoadScene("GameOver");
+	}
+
+	public void Deflect()
+	{
+		deflectPrefab.Spawn(transform.position, "DEFLECT");
 	}
 }
 
