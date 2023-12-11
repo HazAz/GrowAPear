@@ -75,7 +75,7 @@ public class AntBossScript : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 		animator.Play("Ant-Walk");
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(1.5f);
 		inAction = false;
 	}
 

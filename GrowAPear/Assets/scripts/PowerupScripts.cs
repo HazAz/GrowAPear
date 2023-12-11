@@ -25,11 +25,22 @@ public class PowerupScripts : MonoBehaviour
 	[SerializeField] private PowerupPanelScript powerupPanelScript;
 	[SerializeField] private PearSeedPanel gainedSeedPanel;
 	[SerializeField] private PlayerPowerup playerPowerup;
+	[SerializeField] private bool isLevel1 = true;
 
 	private void Start()
 	{
+		if (isLevel1 || StaticPowerupScript.AvailablePowerups.Count == 0)
+		{
+			StaticPowerupScript.NewGameStart();
+		}
+		else
+		{
+			StaticPowerupScript.EnteredNewLevel();
+		}
+
 		foreach (var powerup in StaticPowerupScript.AcquiredPowerups)
 		{
+			Debug.LogError(powerup);
 			playerPowerup.ApplyPowerups(powerup);
 		}
 	}
