@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPowerup : MonoBehaviour
 {
-	[SerializeField] private GameObject rotatingBanana;
+	[SerializeField] private GameObject rotatingBananaPrefab;
 	[SerializeField] private AttackColliderScript attackCollider;
 	[SerializeField] private AttackColliderScript grapeCollider;
 	[SerializeField] private PlayerMovement playerMovement;
@@ -14,7 +14,7 @@ public class PlayerPowerup : MonoBehaviour
 		switch (powerup)
 		{
 			case PowerupTypes.Banana:
-				rotatingBanana.SetActive(true);
+				Instantiate(rotatingBananaPrefab, transform.position, Quaternion.identity);
 				break;
 
 			case PowerupTypes.Cucumber:
@@ -33,8 +33,8 @@ public class PlayerPowerup : MonoBehaviour
 				playerHealth.HasChili = true;
 				break;
 
-			case PowerupTypes.Berry:
-				playerHealth.HasBerry = true;
+			case PowerupTypes.Peppers:
+				playerHealth.HasPepper = true;
 				break;
 
 			case PowerupTypes.Grape:
@@ -44,6 +44,26 @@ public class PlayerPowerup : MonoBehaviour
 
 			case PowerupTypes.Apple:
 				playerHealth.SetHasApple();
+				break;
+
+			case PowerupTypes.Carrot:
+				playerMovement.IncreaseJumpForce();
+				break;
+
+			case PowerupTypes.Berry:
+				playerHealth.HasBerry = true;
+				break;
+
+			case PowerupTypes.Orange:
+				playerHealth.HasOrange = true;
+				break;
+
+			case PowerupTypes.Kiwi:
+				playerHealth.HasKiwi = true;
+				break;
+
+			case PowerupTypes.Broccoli:
+				// spawn stuff here and increase collider
 				break;
 
 		}

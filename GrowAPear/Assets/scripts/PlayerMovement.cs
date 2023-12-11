@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	private bool isGrounded = true;
 	private bool isAttacking = false;
 	private bool isDead = false;
-	private bool canDoubleJump = false;
+	private int maxJumps = 1;
 	private int jumpCount = 0;
 
 	[SerializeField] private GameObject attackCollider;
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (isGrounded || (canDoubleJump && jumpCount < 2))
+			if (isGrounded || jumpCount < maxJumps)
 			{
 				jumpCount++;
 				rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (collision.transform.CompareTag("Platform"))
 		{
+			jumpCount = 0;
 			isGrounded = true;
 		}
 	}
@@ -106,6 +107,11 @@ public class PlayerMovement : MonoBehaviour
 
 	public void AllowDoubleJump()
 	{
-		canDoubleJump = true;
+		maxJumps = 2;
+	}
+
+	public void IncreaseJumpForce()
+	{
+		jumpForce += 3f;
 	}
 }

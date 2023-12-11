@@ -9,11 +9,18 @@ public class PlayerHealth : MonoBehaviour
 	private int currentHealth;
 	[SerializeField] private HealthBar healthBar;
 	[SerializeField] private PlayerSFXScript playerSFXScript;
+	[SerializeField] private PlayerMovement playerMovement;
 
 	private bool hasChili = false;
+	private bool hasPepper = false;
 	private bool hasBerry = false;
+	private bool hasOrange = false;
+	private bool hasKiwi = false;
 	public bool HasChili { get { return hasChili; } set { hasChili = value; } }
+	public bool HasPepper { get { return hasPepper; } set { hasPepper = value; } }
 	public bool HasBerry { get { return hasBerry; } set { hasBerry = value; } }
+	public bool HasOrange { get {  return hasOrange; } set { hasOrange = value; } }
+	public bool HasKiwi { get {  return hasKiwi; } set { hasKiwi = value; } }
 	
 	void Start()
 	{
@@ -23,6 +30,11 @@ public class PlayerHealth : MonoBehaviour
 
 	public void TakeDamage(int damage)
 	{
+		if (hasKiwi && Random.value < 0.15f)
+		{
+			return;
+		}
+
 		currentHealth -= damage;
 
 		if (currentHealth < 0)
@@ -40,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private void Die()
 	{
+		playerMovement.IsDead = true;
 		CancelInvoke();
 		playerSFXScript.PlayDeathSFX();
 		Invoke("GameOver", 1f);
@@ -50,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
 		if (other.CompareTag("Water"))
 		{
 			playerSFXScript.PlayerSwimmingSFX();
-			
+			InvokeRepeating("HealFromWater", 1f, 3f);
 		}
 	}
 
@@ -58,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		if (other.CompareTag("Water"))
 		{
-			InvokeRepeating("HealFromApple", 1f, 3f);
+			CancelInvoke("HealFromWater");
 		}
 	}
 

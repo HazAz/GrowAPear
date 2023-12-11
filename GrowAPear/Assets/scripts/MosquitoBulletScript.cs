@@ -35,7 +35,7 @@ public class MosquitoBulletScript : MonoBehaviour
 		{
 			TryHitPlayer();
 		}
-		else if (other.CompareTag("Enemy"))
+		else if (other.CompareTag("Enemy") && playerHealth.HasOrange)
 		{
 			other.GetComponent<EnemyHealth>()?.TakeDamage(5);
 			Destroy(gameObject);
@@ -44,11 +44,13 @@ public class MosquitoBulletScript : MonoBehaviour
 
 	private void TryHitPlayer()
 	{
-		if (playerHealth.HasBerry)
+		if (playerHealth.HasPepper)
 		{
 			if (!isBoss && Random.value < 0.25f)
 			{
 				targetPosition = (shooterTransform.position - transform.position).normalized;
+				CancelInvoke("Destroy");
+				Invoke("Destroy", destroyTime);
 			}
 			else
 			{
