@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
 	[SerializeField] private DamageNumber damagePrefab;
 	[SerializeField] private DamageNumber deflectPrefab;
 
+	[SerializeField] private GameObject stainGO;
+
 	private bool hasChili = false;
 	private bool hasPepper = false;
 	private bool hasBerry = false;
@@ -59,6 +61,7 @@ public class PlayerHealth : MonoBehaviour
 	private void Die()
 	{
 		StaticPowerupScript.OnDeath();
+		stainGO.SetActive(true);
 		playerMovement.IsDead = true;
 		CancelInvoke();
 		playerSFXScript.PlayDeathSFX();
