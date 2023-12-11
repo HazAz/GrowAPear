@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 497016069}
   - component: {fileID: 497016068}
-  - component: {fileID: 497016070}
   m_Layer: 0
   m_Name: GROW A PEAR CREDITS
   m_TagString: Untagged
@@ -190,19 +189,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &497016070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497016067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f8e3111a7adaf840a8d31a3d4367d7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTime: 28
 --- !u!1 &508846843
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +268,7 @@ GameObject:
   - component: {fileID: 638570033}
   - component: {fileID: 638570032}
   - component: {fileID: 638570031}
+  - component: {fileID: 638570034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -363,6 +350,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &638570034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638570030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8e3111a7adaf840a8d31a3d4367d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeTime: 28
 --- !u!1 &1716667467
 GameObject:
   m_ObjectHideFlags: 0
