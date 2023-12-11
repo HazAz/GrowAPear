@@ -10,9 +10,14 @@ public enum PowerupTypes
     BokChoy, // usain bok 3
     Plum, // Plumario 4
     Chili, // Achilis 5
-    Berry, // Kylian mbappe 6 
+    Peppers, // Kylian mbappe 6 
     Grape, // Alexander the grape 7
     Apple, // Hippocratapple 8
+    Carrot, // Micarrot jordan 9
+    Berry, // Alberry Einstein 10
+    Orange, // Orangeheimer 11
+    Kiwi, // Kiwianu Reeves 12
+    Broccoli, // Mohammed Broccoli 13
 }
 
 public class PowerupScripts : MonoBehaviour

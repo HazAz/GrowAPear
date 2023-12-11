@@ -99,6 +99,10 @@ public class MosquitoScript : MonoBehaviour
 					enemyHealth.TakeDamage(5);
 				}
 			}
+			else if (hit.collider.CompareTag("Enemy") && playerHealth.HasBerry)
+			{
+				hit.collider.GetComponent<EnemyHealth>()?.TakeDamage(10);
+			}
 		}
 
 		yield return new WaitForSeconds(0.5f);

@@ -262,6 +262,7 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 0}
   playerSFXScript: {fileID: 9063231835156299642}
+  playerMovement: {fileID: 6215101623261671376}
 --- !u!114 &9063231835156299642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b24cba6ef9c644c80f19846690aca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingBanana: {fileID: 0}
+  rotatingBananaPrefab: {fileID: 1609857498690443598, guid: 7b9abcb422465314b9cd10a12db6bf13, type: 3}
   attackCollider: {fileID: 3568930098891648534}
   grapeCollider: {fileID: 2461577747095069018}
   playerMovement: {fileID: 6215101623261671376}

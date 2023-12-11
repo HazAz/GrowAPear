@@ -86,6 +86,10 @@ public class SkeeterBossScript : MonoBehaviour
 					enemyHealth.TakeDamage(5);
 				}
 			}
+			else if (hit.collider.CompareTag("Enemy") && playerHealth.HasBerry)
+			{
+				hit.collider.GetComponent<EnemyHealth>()?.TakeDamage(20);
+			}
 		}
 
 		yield return new WaitForSeconds(0.5f);
