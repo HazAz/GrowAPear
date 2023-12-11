@@ -108,7 +108,6 @@ public class EnemySpawner : MonoBehaviour
 
 	private void SpawnAnt()
 	{
-
 		var ant = Instantiate(antPrefab, GetPositionForAnt(), Quaternion.identity);
 		ant.Init(player, this);
 		++numAntSpawned;
