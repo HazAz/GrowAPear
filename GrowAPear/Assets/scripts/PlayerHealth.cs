@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private void Die()
 	{
+		StaticPowerupScript.OnDeath();
 		playerMovement.IsDead = true;
 		CancelInvoke();
 		playerSFXScript.PlayDeathSFX();

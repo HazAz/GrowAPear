@@ -15,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
 	private bool isDead = false;
 	private int maxJumps = 1;
 	private int jumpCount = 0;
+	private bool canPunch = false;
 
 	[SerializeField] private GameObject attackCollider;
 
 	public bool IsDead { get { return isDead; } set { isDead = value; } }
+	public bool CanPunch { get { return canPunch; } set { canPunch = value; } }
 
 	private void Start()
 	{
@@ -75,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 	private IEnumerator Attack()
 	{
 		isAttacking = true;
-		animator.Play("AttackAnim");
+		animator.Play(canPunch ? "PunchAnim" : "AttackAnim");
 		playerSFXScript.PlayerHitSFX();
 		attackCollider.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
