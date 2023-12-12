@@ -28,6 +28,9 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField] private List<Transform> mosquitoSpawnPositions = new();
 	[SerializeField] private List<Transform> antSpawnPositions = new();
 
+	[SerializeField] private AudioSource sceneAudioSource;
+	[SerializeField] private AudioClip bossAudio;
+
 	private int numMosquitoSpawned = 0;
 	private int numAntSpawned = 0;
 	private int numBeeSpawned = 0;
@@ -251,6 +254,11 @@ public class EnemySpawner : MonoBehaviour
 
 	private void SpawnFinalBoss()
 	{
+		var time = sceneAudioSource.time;
+		sceneAudioSource.clip = bossAudio;
+		sceneAudioSource.time = time;
+		sceneAudioSource.Play();
+
 		currentTotalEnemiesCount = 0;
 
 		if (skeeterBossPrefab != null)
@@ -269,7 +277,7 @@ public class EnemySpawner : MonoBehaviour
 
 		if (beeBossPrefab != null)
 		{
-			var beeBoss = Instantiate(beeBossPrefab, GetPositionForAnt(), Quaternion.identity);
+			var beeBoss = Instantiate(beeBossPrefab, GetPositionForMosquito(), Quaternion.identity);
 			beeBoss.Init(player, this);
 			currentTotalEnemiesCount++;
 		}

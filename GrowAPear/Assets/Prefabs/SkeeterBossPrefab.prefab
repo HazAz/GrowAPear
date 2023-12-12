@@ -105,7 +105,7 @@ MonoBehaviour:
   beeScript: {fileID: 0}
   beeBossScript: {fileID: 0}
   damagePrefab: {fileID: 7255533913272819747, guid: b33441a8dfe8f0d449f4e4a5d2dcfa73, type: 3}
-  bloodPrefab: {fileID: 1116219683662778855, guid: c1384515aa0d2de42af0da163bcf1ceb, type: 3}
+  bloodPrefab: {fileID: 3749139814237490188, guid: 89cef4b170aa548469a90c6c310b6061, type: 3}
 --- !u!114 &7073567598449391646
 MonoBehaviour:
   m_ObjectHideFlags: 0

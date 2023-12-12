@@ -46,6 +46,7 @@ public class PauseMenu : MonoBehaviour
 	public void RestartScene()
 	{
 		StaticPowerupScript.OnDeath();
+		Time.timeScale = 1f;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
