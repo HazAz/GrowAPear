@@ -17133,15 +17133,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cfe6124c2c9554b9b18c093884f36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mosquitoPrefab: {fileID: 5407190486252146172, guid: f4eefb4af1ac394419aa4a80f51b3f12, type: 3}
+  mosquitoPrefab: {fileID: 5407190486252146172, guid: a8d0d1fad018c2f49b8bfb68c7caf105, type: 3}
   skeeterBossPrefab: {fileID: 0}
   bulletPrefab: {fileID: 8363977490194873230, guid: fc3758f840234a1469387882cda1967e, type: 3}
   antPrefab: {fileID: -6155435385734633126, guid: bbbb439cc61e282419ad43cb454594d4, type: 3}
   antBossPrefab: {fileID: 6936278310983240508, guid: c1384515aa0d2de42af0da163bcf1ceb, type: 3}
+  beePrefab: {fileID: 0}
+  beeBossPrefab: {fileID: 0}
   maxMosquitoCountWave1: 2
   maxMosquitoCountWave2: 3
   maxAntCountWave1: 2
   maxAntCountWave2: 3
+  maxBeeCountWave1: 0
+  maxBeeCountWave2: 0
   minTimeToSpawn: 2
   maxTimeToSpawn: 5
   mosquitoSpawnPositions:

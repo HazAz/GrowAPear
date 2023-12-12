@@ -246,6 +246,7 @@ public class EnemySpawner : MonoBehaviour
 		enemiesDead = 0;
 		numAntSpawned = 0;
 		numMosquitoSpawned = 0;
+		numBeeSpawned = 0;
 	}
 
 	private void SpawnFinalBoss()
