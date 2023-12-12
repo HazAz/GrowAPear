@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
 	[SerializeField] private BeeScript beeScript;
 	[SerializeField] private BeeBossScript beeBossScript;
 	[SerializeField] private DamageNumber damagePrefab;
+	[SerializeField] private GameObject bloodPrefab;
 
 	void Start()
 	{
@@ -32,6 +33,8 @@ public class EnemyHealth : MonoBehaviour
 
 	private void Die()
 	{
+		Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+
 		mosquitoScript?.Die();
 		skeeterBossScript?.Die();
 		antScript?.Die();

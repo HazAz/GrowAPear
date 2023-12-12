@@ -69,6 +69,12 @@ public class PowerupScripts : MonoBehaviour
 
 	public void CreateGainedSeedPanel(Action onComplete = null)
 	{
+		if (gainedSeedPanel == null)
+		{
+			onComplete?.Invoke();
+			return;
+		}
+
 		gainedSeedPanel.gameObject.SetActive(true);
 		gainedSeedPanel.Init(onComplete);
 	}

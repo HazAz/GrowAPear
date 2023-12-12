@@ -18,6 +18,8 @@ public class MosquitoBulletScript : MonoBehaviour
 	{
 		playerHealth = health;
 		targetPosition = (playerHealth.transform.position - transform.position).normalized;
+		transform.rotation = Quaternion.LookRotation(targetPosition, Vector3.up);
+
 		speed = Random.Range(minSpeed, maxSpeed);
 		shooterPos = shooterTransform != null ? shooterTransform.position : Vector3.zero;
 		isBoss = boss;
