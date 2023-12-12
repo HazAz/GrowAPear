@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7056520bbb40a46b2fe1cfb96ceb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   mosquitoScript: {fileID: 0}
   skeeterBossScript: {fileID: 0}
   antScript: {fileID: 0}
@@ -83,6 +83,7 @@ MonoBehaviour:
   beeScript: {fileID: 0}
   beeBossScript: {fileID: 5111269425795140884}
   damagePrefab: {fileID: 7255533913272819747, guid: b33441a8dfe8f0d449f4e4a5d2dcfa73, type: 3}
+  bloodPrefab: {fileID: 3749139814237490188, guid: 89cef4b170aa548469a90c6c310b6061, type: 3}
 --- !u!65 &1861986515763884085
 BoxCollider:
   m_ObjectHideFlags: 0
