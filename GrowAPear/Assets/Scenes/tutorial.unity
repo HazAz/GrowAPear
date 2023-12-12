@@ -14246,7 +14246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0271be905478e4f4d84b1118b7e64ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 889970969}
 --- !u!114 &109440659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15330,6 +15330,11 @@ PrefabInstance:
 --- !u!224 &889970968 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2653132514413055342, guid: 13acbd0a0a01e98459dd4b34cfa4856b, type: 3}
+  m_PrefabInstance: {fileID: 889970967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &889970969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1416521400588292012, guid: 13acbd0a0a01e98459dd4b34cfa4856b, type: 3}
   m_PrefabInstance: {fileID: 889970967}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &923816433 stripped

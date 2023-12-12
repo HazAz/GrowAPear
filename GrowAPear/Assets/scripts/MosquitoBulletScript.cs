@@ -6,6 +6,7 @@ public class MosquitoBulletScript : MonoBehaviour
 {
 	[SerializeField] private float minSpeed = 3f;
 	[SerializeField] private float maxSpeed = 5f;
+	[SerializeField] private int damage = 10;
 	[SerializeField] private float destroyTime = 3f;
 
 	private Vector3 targetPosition;
@@ -37,10 +38,14 @@ public class MosquitoBulletScript : MonoBehaviour
 		{
 			TryHitPlayer();
 		}
-		else if (other.CompareTag("Enemy") && playerHealth.HasOrange)
+		else if (other.CompareTag("Enemy"))
 		{
-			other.GetComponent<EnemyHealth>()?.TakeDamage(5);
-			Destroy(gameObject);
+			if (playerHealth.HasOrange)
+			{
+				other.GetComponent<EnemyHealth>()?.TakeDamage(5);
+			}
+
+			return;
 		}
 		else
 		{
@@ -61,7 +66,7 @@ public class MosquitoBulletScript : MonoBehaviour
 			}
 		}
 
-		playerHealth.TakeDamage(5);
+		playerHealth.TakeDamage(damage);
 		Destroy(gameObject);
 	}
 

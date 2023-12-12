@@ -6,6 +6,7 @@ public class BeeScript : MonoBehaviour
 {
 	[SerializeField] private float speed = 10f;
 	[SerializeField] private float meleeRange = 2f;
+	[SerializeField] private int damage = 20;
 	[SerializeField] private Animator animator;
 	[SerializeField] private EnemyHealth enemyHealth;
 
@@ -55,12 +56,13 @@ public class BeeScript : MonoBehaviour
 		animator.Play("Bee-Atk");
 		yield return new WaitForSeconds(0.6f);
 
-		if (Physics.Raycast(transform.position, transform.forward, out var hit, meleeRange))
+		var direction = (playerHealth.transform.position - transform.position).normalized;
+		if (Physics.Raycast(transform.position, direction, out var hit, meleeRange))
 		{
 			// Check if the hit object is the player
 			if (hit.collider.CompareTag("Player"))
 			{
-				playerHealth.TakeDamage(20);
+				playerHealth.TakeDamage(damage);
 
 				if (playerHealth.HasChili)
 				{

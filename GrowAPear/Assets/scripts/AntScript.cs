@@ -6,6 +6,7 @@ public class AntScript : MonoBehaviour
 {
 	[SerializeField] private float speed = 6f;
 	[SerializeField] private float meleeRange = 1f;
+	[SerializeField] private int damage = 20;
 	[SerializeField] private Animator animator;
 	[SerializeField] private EnemyHealth enemyHealth;
 
@@ -56,12 +57,13 @@ public class AntScript : MonoBehaviour
 		animator.Play("Ant-Chomp");
 		yield return new WaitForSeconds(0.6f);
 
-		if (Physics.Raycast(transform.position, transform.forward, out var hit, meleeRange))
+		var direction = (playerHealth.transform.position - transform.position).normalized;
+		if (Physics.Raycast(transform.position, direction, out var hit, meleeRange))
 		{
 			// Check if the hit object is the player
 			if (hit.collider.CompareTag("Player"))
 			{
-				playerHealth.TakeDamage(15);
+				playerHealth.TakeDamage(damage);
 
 				if (playerHealth.HasChili)
 				{

@@ -73,23 +73,6 @@ public class PlayerHealth : MonoBehaviour
 		Invoke("GameOver", 1f);
 	}
 
-	public void OnTriggerEnter(Collider other)
-	{
-		if (other.CompareTag("Water"))
-		{
-			playerSFXScript.PlayerSwimmingSFX();
-			InvokeRepeating("HealFromWater", 1f, 3f);
-		}
-	}
-
-	public void OnTriggerExit(Collider other)
-	{
-		if (other.CompareTag("Water"))
-		{
-			CancelInvoke("HealFromWater");
-		}
-	}
-
 	public void SetHasApple()
 	{
 		InvokeRepeating("HealFromApple", 0f, 10f);
@@ -103,10 +86,10 @@ public class PlayerHealth : MonoBehaviour
 		healthBar.SetHealth(currentHealth);
 	}
 
-	private void HealFromWater()
+	public void HealFromWater()
 	{
-		currentHealth = Mathf.Min(maxHealth, currentHealth + 15);
-		healPrefab.Spawn(transform.position, 15);
+		currentHealth = Mathf.Min(maxHealth, currentHealth + 10);
+		healPrefab.Spawn(transform.position, 10);
 
 		healthBar.SetHealth(currentHealth);
 	}

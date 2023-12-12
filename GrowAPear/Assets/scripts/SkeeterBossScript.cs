@@ -7,6 +7,7 @@ public class SkeeterBossScript : MonoBehaviour
 	[SerializeField] private float speed = 8f;
 	[SerializeField] private float shootingRange = 15f;
 	[SerializeField] private float meleeRange = 6f;
+	[SerializeField] private int damage = 30;
 	[SerializeField] private Animator animator;
 	[SerializeField] private EnemyHealth enemyHealth;
 
@@ -74,12 +75,13 @@ public class SkeeterBossScript : MonoBehaviour
 		animator.Play("Skeeter-Melee");
 		yield return new WaitForSeconds(0.6f);
 
-		if (Physics.Raycast(transform.position, transform.forward, out var hit, meleeRange))
+		var direction = (playerHealth.transform.position - transform.position).normalized;
+		if (Physics.Raycast(transform.position, direction, out var hit, meleeRange))
 		{
 			// Check if the hit object is the player
 			if (hit.collider.CompareTag("Player"))
 			{
-				playerHealth.TakeDamage(25);
+				playerHealth.TakeDamage(30);
 
 				if (playerHealth.HasChili)
 				{
@@ -94,7 +96,7 @@ public class SkeeterBossScript : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 		animator.Play("Skeeter-FlyingAnim");
-		yield return new WaitForSeconds(2.5f);
+		yield return new WaitForSeconds(1f);
 		inAction = false;
 	}
 

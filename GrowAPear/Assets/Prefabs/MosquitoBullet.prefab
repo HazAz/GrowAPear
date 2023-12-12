@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 4
   maxSpeed: 7
+  damage: 7
   destroyTime: 3
 --- !u!54 &1928109883592333706
 Rigidbody:

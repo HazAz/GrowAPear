@@ -28906,14 +28906,14 @@ MonoBehaviour:
   antBossPrefab: {fileID: 6936278310983240508, guid: c1384515aa0d2de42af0da163bcf1ceb, type: 3}
   beePrefab: {fileID: 6419968396666600539, guid: ff6a4157f3e3b1b4e9473583bda84d76, type: 3}
   beeBossPrefab: {fileID: 5111269425795140884, guid: 1655737d151de9541872ef970b0e3e25, type: 3}
-  maxMosquitoCountWave1: 5
-  maxMosquitoCountWave2: 3
+  maxMosquitoCountWave1: 4
+  maxMosquitoCountWave2: 5
   maxAntCountWave1: 3
-  maxAntCountWave2: 6
-  maxBeeCountWave1: 6
-  maxBeeCountWave2: 6
-  minTimeToSpawn: 1
-  maxTimeToSpawn: 3
+  maxAntCountWave2: 5
+  maxBeeCountWave1: 3
+  maxBeeCountWave2: 5
+  minTimeToSpawn: 2
+  maxTimeToSpawn: 5
   mosquitoSpawnPositions:
   - {fileID: 1554606516}
   - {fileID: 1639869900}

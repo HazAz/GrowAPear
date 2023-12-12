@@ -82,8 +82,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.96439666, z: 2.2739983}
-  m_Center: {x: 0, y: -0.12275854, z: -0.17142963}
+  m_Size: {x: 1, y: 0.96439666, z: 2.2054224}
+  m_Center: {x: 0, y: -0.12275854, z: -0.051817417}
 --- !u!114 &8186803875270742243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7056520bbb40a46b2fe1cfb96ceb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 60
+  maxHealth: 100
   mosquitoScript: {fileID: 0}
   skeeterBossScript: {fileID: 0}
   antScript: {fileID: -6155435385734633126}
@@ -151,7 +151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e57c11987049e94d9cbde9215813dd2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.142
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e57c11987049e94d9cbde9215813dd2, type: 3}
       propertyPath: m_LocalRotation.w

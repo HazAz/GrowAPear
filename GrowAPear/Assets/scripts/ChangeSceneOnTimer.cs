@@ -14,8 +14,13 @@ public class ChangeSceneOnTimer : MonoBehaviour
         changeTime -= Time.deltaTime;
         if (changeTime <= 0) 
         {
-            SceneManager.LoadScene("Level1");
+            SkipVideo();
         }
         
     }
+
+    public void SkipVideo()
+    {
+		SceneManager.LoadScene("Level1");
+	}
 }

@@ -551,8 +551,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3020666, y: 0.020154608, z: 0.38990963}
-  m_Center: {x: 0.060689077, y: 0.44353563, z: -0.25195622}
+  m_Size: {x: 0.3020666, y: 0.041194636, z: 0.38990963}
+  m_Center: {x: 0.060689077, y: 0.42077938, z: -0.25195417}
 --- !u!4 &234844300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c24df11fd82ae84bbd894e661919fad, type: 3}
@@ -897,6 +897,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b24cba6ef9c644c80f19846690aca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &540285206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1797387334288686880, guid: 1b27bbce5de98ef49a52172b3b74a730, type: 3}
+  m_PrefabInstance: {fileID: 7298002737172768174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3626fdbd69847284cb0fe30549014057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &545603955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,8 +1187,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.33243614, y: 0.037764743, z: 0.4099053}
-  m_Center: {x: 0.045504488, y: 0.460248, z: -0.26195395}
+  m_Size: {x: 0.33243623, y: 0.040170845, z: 0.4099053}
+  m_Center: {x: 0.045503803, y: 0.4219762, z: -0.26195136}
 --- !u!4 &678498302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c24df11fd82ae84bbd894e661919fad, type: 3}
@@ -1796,9 +1807,10 @@ GameObject:
   m_Component:
   - component: {fileID: 820482006}
   - component: {fileID: 820482007}
+  - component: {fileID: 820482008}
   m_Layer: 0
   m_Name: Cup
-  m_TagString: Water
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1840,6 +1852,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5864508, y: 0.67370605, z: 1}
   m_Center: {x: 0.11469281, y: 0.57861805, z: 0}
+--- !u!114 &820482008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820482005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ab5ab23b706fc4096c2bd66ffb079f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 540285206}
 --- !u!1 &1014306978
 GameObject:
   m_ObjectHideFlags: 0
@@ -16587,8 +16612,8 @@ MonoBehaviour:
   antBossPrefab: {fileID: 0}
   beePrefab: {fileID: 0}
   beeBossPrefab: {fileID: 0}
-  maxMosquitoCountWave1: 7
-  maxMosquitoCountWave2: 12
+  maxMosquitoCountWave1: 6
+  maxMosquitoCountWave2: 10
   maxAntCountWave1: 0
   maxAntCountWave2: 0
   maxBeeCountWave1: 0
@@ -17649,8 +17674,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2458384, y: 2.109131, z: 2.8758452}
-  m_Center: {x: 1.3566314, y: 0.5545659, z: 0.11410272}
+  m_Size: {x: 0.4551742, y: 2.2824976, z: 2.8758452}
+  m_Center: {x: 1.5339581, y: 0.64124954, z: 0.11410272}
 --- !u!4 &1837085718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 30354c8adf94e8442a3108d8668bd5b8, type: 3}
