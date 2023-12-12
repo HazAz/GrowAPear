@@ -68,9 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb78d1d24d8ceee48b236ea6a0cb67b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 2.5
-  maxSpeed: 5
-  destroyTime: 10
+  minSpeed: 3
+  maxSpeed: 7
+  damage: 20
+  destroyTime: 15
 --- !u!54 &1928109883592333706
 Rigidbody:
   m_ObjectHideFlags: 0

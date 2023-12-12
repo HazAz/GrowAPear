@@ -5,6 +5,7 @@ public class AntBossScript : MonoBehaviour
 {
 	[SerializeField] private float speed = 10f;
 	[SerializeField] private float meleeRange = 3f;
+	[SerializeField] private int damage = 30;
 	[SerializeField] private Animator animator;
 	[SerializeField] private EnemyHealth enemyHealth;
 
@@ -55,12 +56,13 @@ public class AntBossScript : MonoBehaviour
 		animator.Play("Ant-Chomp");
 		yield return new WaitForSeconds(0.6f);
 
-		if (Physics.Raycast(transform.position, transform.forward, out var hit, meleeRange))
+		var direction = (playerHealth.transform.position - transform.position).normalized;
+		if (Physics.Raycast(transform.position, direction, out var hit, meleeRange))
 		{
 			// Check if the hit object is the player
 			if (hit.collider.CompareTag("Player"))
 			{
-				playerHealth.TakeDamage(15);
+				playerHealth.TakeDamage(damage);
 
 				if (playerHealth.HasChili)
 				{
@@ -75,7 +77,7 @@ public class AntBossScript : MonoBehaviour
 
 		yield return new WaitForSeconds(0.5f);
 		animator.Play("Ant-Walk");
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(0.5f);
 		inAction = false;
 	}
 
@@ -89,7 +91,7 @@ public class AntBossScript : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			InvokeRepeating("DealCollisionDamage", 1f, 5f);
+			InvokeRepeating("DealCollisionDamage", 1f, 1f);
 		}
 	}
 

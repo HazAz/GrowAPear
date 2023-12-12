@@ -82,8 +82,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.96439666, z: 2.2739983}
-  m_Center: {x: 0, y: -0.12275854, z: -0.17142963}
+  m_Size: {x: 1, y: 0.96439666, z: 2.085942}
+  m_Center: {x: 0, y: -0.12275853, z: -0.20906869}
 --- !u!114 &8186803875270742243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7056520bbb40a46b2fe1cfb96ceb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   mosquitoScript: {fileID: 0}
   skeeterBossScript: {fileID: 0}
   antScript: {fileID: 0}
@@ -118,7 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  meleeRange: 5
+  meleeRange: 1.5
+  damage: 30
   animator: {fileID: 3130404895864382430}
   enemyHealth: {fileID: 8186803875270742243}
 --- !u!1001 &9199916059157756262

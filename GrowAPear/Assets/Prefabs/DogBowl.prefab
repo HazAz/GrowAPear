@@ -93,9 +93,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7347604490042612345}
   - component: {fileID: 3197747669838767448}
+  - component: {fileID: 4510258568712535985}
   m_Layer: 0
   m_Name: waterCollider
-  m_TagString: Water
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,8 +135,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3760748, y: 1.2697122, z: 2.6878786}
-  m_Center: {x: -0.9358554, y: 0.1348561, z: 0.083310366}
+  m_Size: {x: 2.073162, y: 1.1214713, z: 2.6878786}
+  m_Center: {x: -0.9836006, y: 0.060735762, z: 0.083310366}
+--- !u!114 &4510258568712535985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5560619882877118130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ab5ab23b706fc4096c2bd66ffb079f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
 --- !u!1 &6094517579968638851
 GameObject:
   m_ObjectHideFlags: 0

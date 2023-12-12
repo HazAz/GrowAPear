@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  shootingRange: 10
+  shootingRange: 6
   meleeRange: 2
   animator: {fileID: 6370335303362369011}
   enemyHealth: {fileID: -4497063784613228526}

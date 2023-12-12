@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7056520bbb40a46b2fe1cfb96ceb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 60
+  maxHealth: 100
   mosquitoScript: {fileID: 0}
   skeeterBossScript: {fileID: 0}
   antScript: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  meleeRange: 2
+  meleeRange: 1
   animator: {fileID: 4426262019205197000}
   enemyHealth: {fileID: 2456770496466779569}
 --- !u!1001 &7784375693114593625

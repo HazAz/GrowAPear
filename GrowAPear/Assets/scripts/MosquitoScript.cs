@@ -78,7 +78,7 @@ public class MosquitoScript : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		var bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
 		bullet.Init(playerHealth, this.transform);
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(1f);
 		inAction = false;
 	}
 
@@ -88,12 +88,13 @@ public class MosquitoScript : MonoBehaviour
 		animator.Play("Skeeter-Melee");
 		yield return new WaitForSeconds(0.6f);
 
-		if (Physics.Raycast(transform.position, transform.forward, out var hit, meleeRange))
+		var direction = (playerHealth.transform.position - transform.position).normalized;
+		if (Physics.Raycast(transform.position, direction, out var hit, meleeRange))
 		{
 			// Check if the hit object is the player
 			if (hit.collider.CompareTag("Player"))
 			{
-				playerHealth.TakeDamage(10);
+				playerHealth.TakeDamage(12);
 
 				if (playerHealth.HasChili)
 				{
