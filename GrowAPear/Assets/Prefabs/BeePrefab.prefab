@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6419968396666600539}
   m_Layer: 0
   m_Name: BeePrefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7749869287430076082}
@@ -101,6 +101,8 @@ MonoBehaviour:
   skeeterBossScript: {fileID: 0}
   antScript: {fileID: 0}
   antBossScript: {fileID: 0}
+  beeScript: {fileID: 6419968396666600539}
+  beeBossScript: {fileID: 0}
   damagePrefab: {fileID: 7255533913272819747, guid: b33441a8dfe8f0d449f4e4a5d2dcfa73, type: 3}
 --- !u!114 &6419968396666600539
 MonoBehaviour:
