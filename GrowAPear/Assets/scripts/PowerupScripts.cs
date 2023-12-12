@@ -40,7 +40,6 @@ public class PowerupScripts : MonoBehaviour
 
 		foreach (var powerup in StaticPowerupScript.AcquiredPowerups)
 		{
-			Debug.LogError(powerup);
 			playerPowerup.ApplyPowerups(powerup);
 		}
 	}
